@@ -1,0 +1,59 @@
+﻿@{
+    ViewBag.Title = "Chatbot";
+}
+
+<h2 class="chat-title">AI Chatbot</h2>
+
+<div id="chatbox">
+    <div id="chat-content">
+        <div id="suggestion-box">
+            <div class="bot-suggestion" onclick="sendMessageFromSuggestion(this)">How do I create a Sitecore template?</div>
+            <div class="bot-suggestion" onclick="sendMessageFromSuggestion(this)">How can I use Sitecore renderings?</div>
+            <div class="bot-suggestion" onclick="sendMessageFromSuggestion(this)">What is a Sitecore datasource?</div>
+            <p class="bot-message"><b>Mona:</b> How can I help you today?</p>
+        </div>
+    </div>
+
+    <div id="input-container">
+        <input type="text" id="userInput" placeholder="Ask me anything about Sitecore..." />
+        <button onclick="sendMessage()">➤</button>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    let chatStarted = false;
+
+    function sendMessage() {
+        var userMessage = $("#userInput").val();
+        if (!userMessage) return;
+
+        if (!chatStarted) {
+            $("#suggestion-box").hide();
+            chatStarted = true;
+        }
+
+        $("#chat-content").append("<div class='user-message'><b>You:</b> " + userMessage + "</div>");
+        $("#userInput").val("");
+
+        $.ajax({
+            url: "/Chat/GetResponse",
+            type: "POST",
+            data: { userMessage: userMessage },
+            success: function (data) {
+                $("#chat-content").append("<div class='bot-message'><b>Mona:</b> " + data.BotResponse + "</div>");
+                $("#chatbox").scrollTop($("#chatbox")[0].scrollHeight);
+            },
+            error: function () {
+                $("#chat-content").append("<div class='bot-message'><b>Mona:</b> Error fetching response.</div>");
+            }
+        });
+    }
+
+    function sendMessageFromSuggestion(element) {
+        $("#userInput").val($(element).text());
+        sendMessage();
+    }
+</script>
+
+<link rel="stylesheet" href="~/Content/chatbot.css">

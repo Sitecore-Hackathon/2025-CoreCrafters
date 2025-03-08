@@ -9,60 +9,56 @@
 You can find a very good reference to Github flavoured markdown reference in [this cheatsheet](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet). If you want something a bit more WYSIWYG for editing then could use [StackEdit](https://stackedit.io/app) which provides a more user friendly interface for generating the Markdown code. Those of you who are [VS Code fans](https://code.visualstudio.com/docs/languages/markdown#_markdown-preview) can edit/preview directly in that interface too.
 
 ## Team name
-⟹ Write the name of your Hackathon team here
+Core Crafters
 
 ## Category
-⟹ Write the name of the selected category
+AI
 
 ## Description
 ⟹ Write a clear description of your hackathon entry.  
 
-  - Module Purpose
-  - What problem was solved (if any)
-    - How does this module solve it
+Module Purpose
+This module automates content authoring in Sitecore XP by integrating OpenAI's API. It enhances efficiency, accuracy, and consistency by leveraging AI-generated PowerShell scripts and structured templates. Additionally, an AI-powered chatbot provides real-time assistance to users, improving their overall content creation experience.
 
-_You can alternately paste a [link here](#docs) to a document within this repo containing the description._
+Problem Solved
+Manual content authoring in Sitecore XP can be time-consuming, error-prone, and inconsistent. Authors often struggle with maintaining structured templates and ensuring content quality.
+
+How This Module Solves It
+AI-Generated Templates: Automates the creation of structured templates based on user input, reducing manual effort.
+AI-Powered Chatbot: Provides real-time guidance, automating repetitive tasks and assisting users within the Sitecore XP ecosystem.
+
 
 ## Video link
 ⟹ Provide a video highlighing your Hackathon module submission and provide a link to the video. You can use any video hosting, file share or even upload the video to this repository. _Just remember to update the link below_
 
 ⟹ [Replace this Video link](#video-link)
-
-## Pre-requisites and Dependencies
-
-⟹ Does your module rely on other Sitecore modules or frameworks?
-
-- List any dependencies
-- Or other modules that must be installed
-- Or services that must be enabled/configured
-
-_Remove this subsection if your entry does not have any prerequisites other than Sitecore_
+https://youtu.be/fRu-yP5WshI?si=y0ae1mzprOQWtGfY
 
 ## Installation instructions
 ⟹ Write a short clear step-wise instruction on how to install your module.  
 
-> _A simple well-described installation process is required to win the Hackathon._  
-> Feel free to use any of the following tools/formats as part of the installation:
-> - Sitecore Package files
-> - Docker image builds
-> - Sitecore CLI
-> - msbuild
-> - npm / yarn
-> 
-> _Do not use_
-> - TDS
-> - Unicorn
- 
+> - Install Sitecore Package files
+> - Install the required package:
+    ```sh
+    dotnet add package OpenAI
+    ```
+> - Add your OpenAI API key in the code:
+    ```csharp
+    var apiKey = "YOUR_OPENAI_API_KEY";
+    ```
+	Ensure that your API key is securely stored and not hardcoded in production environments.
+
+> - Install core template package for Templify AI button
+
+> - Published all dlls and UI files.
+
 for example:
 
 1. Use the Sitecore Installation wizard to install the [package](#link-to-package)
 2. ...
 3. profit
 
-### Configuration
-⟹ If there are any custom configuration that has to be set manually then remember to add all details here.
 
-_Remove this subsection if your entry does not require any configuration that is not fully covered in the installation instructions already_
 
 ## Usage instructions
 ⟹ Provide documentation about your module, how do the users use your module, where are things located, what do the icons mean, are there any secret shortcuts etc.
